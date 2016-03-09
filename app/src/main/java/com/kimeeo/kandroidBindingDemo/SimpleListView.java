@@ -29,16 +29,16 @@ public class SimpleListView extends ListView
 
         StaticDataManger listData1= new StaticDataManger(getActivity());
         listData1.setRefreshEnabled(false);
-        listData1.add(new User("B1"));
-        listData1.add(new User("B2"));
-        listData1.add(new User("B3"));
-        listData1.add(new User("B4"));
-        listData1.add(new User("B5"));
-        listData1.add(new User("B6"));
-        listData1.add(new User("B7"));
-        listData1.add(new User("B8"));
-        listData1.add(new User("B9"));
-        listData1.add(new User("B10"));
+        listData1.add(new User1("B1"));
+        listData1.add(new User1("B2"));
+        listData1.add(new User1("B3"));
+        listData1.add(new User1("B4"));
+        listData1.add(new User1("B5"));
+        listData1.add(new User1("B6"));
+        listData1.add(new User1("B7"));
+        listData1.add(new User1("B8"));
+        listData1.add(new User1("B9"));
+        listData1.add(new User1("B10"));
         return listData1;
     }
     @Override
