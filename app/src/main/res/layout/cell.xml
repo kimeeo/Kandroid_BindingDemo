@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <variable name="handlers" type="com.kimeeo.kandroidBindingDemo.SimpleListView.BindingItemHolder1"/>
         <variable name="user" type="com.kimeeo.kandroidBindingDemo.User"/>
+        <variable name="inLineTextWatcher" type="android.text.TextWatcher"/>
+
     </data>
     <LinearLayout
         android:background="@color/colorAccent"
@@ -23,9 +26,18 @@
             android:textSize="20sp"
             tools:text="Test Data"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}"
+            android:onClick="@{handlers.onClickFriend}"
+            />
+
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
+
             app:imageUrl="@{user.url}"/>
 
         <EditText
@@ -33,7 +45,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:inputType="text"
-            app:addTextChangedListener="@{user}"
+            android:addTextChangedListener="@{inLineTextWatcher}"
             tools:text="Test Data"/>
+
+        <!--
+        android:visibility="@{user.name==&quot;B1&quot;?View.GONE:View.GONE}"
+        -->
     </LinearLayout>
 </layout>

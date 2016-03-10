@@ -2,10 +2,13 @@ package com.kimeeo.kandroidBindingDemo;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kimeeo.kandroidBindingDemo.databinding.CellBinding;
 import com.kimeeo.library.listDataView.dataManagers.DataManager;
@@ -17,6 +20,7 @@ import com.kimeeo.library.listDataView.recyclerView.BaseItemHolder;
 import com.kimeeo.library.listDataView.recyclerView.verticalViews.ListView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.kimeeo.kandroidBindingDemo.BR;
@@ -62,9 +66,13 @@ public class SimpleListView extends ListView
     {
         public BindingItemHolder1(View itemView,int variableID)
         {
-            super(itemView,variableID);
-            CellBinding c=getBinding();
-            TextView tx=c.userName;
+            super(itemView, variableID);
+            CellBinding cellBinding=getBinding();
+
+            Map<Integer,Object> map = new HashMap<>();
+            map.put(BR.handlers, this);
+            map.put(BR.inLineTextWatcher, textWatcher);
+            setVariables(map);
         }
         public BindingItemHolder1(View itemView) {
             super(itemView);
@@ -72,5 +80,28 @@ public class SimpleListView extends ListView
         public void updateItemView(Object data, View view, int position){
             //updateBindings(BR.user,data);
         }
+
+        public void onClickFriend(View view) {
+            Toast.makeText(view.getContext(), "onClickFriend "+position, Toast.LENGTH_SHORT).show();
+        }
+        public void onClickEnemy(View view) {
+            Toast.makeText(view.getContext(), "onClickEnemy "+position, Toast.LENGTH_SHORT).show();
+        }
+
+
+        TextWatcher textWatcher=new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!getBinding().getUser().getName().equals(s.toString())) {
+                    getBinding().getUser().setName(s.toString());
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        };
     }
 }

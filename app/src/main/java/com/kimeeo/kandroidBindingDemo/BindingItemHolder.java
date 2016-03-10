@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import com.kimeeo.kandroidBindingDemo.databinding.CellBinding;
 import com.kimeeo.library.listDataView.recyclerView.BaseItemHolder;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 /**
  * Created by bhavinpadhiyar on 3/9/16.
  */
@@ -22,30 +26,42 @@ public class BindingItemHolder<T extends ViewDataBinding> extends BaseItemHolder
     }
     public BindingItemHolder(View itemView)
     {
-        super(itemView);
-        bindHelper = new BindHelper<T>(itemView,-1);
+        this(itemView, -1);
     }
+
+
+
     public BindHelper getBindHelper() {
         return bindHelper;
-    }
-    public void updateItemView(Object item, int position) {
-        updateBindings(item);
-        super.updateItemView(item, position);
     }
     public T getBinding()
     {
         return bindHelper.getBinding();
     }
-    public void updateBindings(Object data)
+
+
+
+    public void updateItemView(Object item, int position)
     {
-        bindHelper.updateBindings(data);
-    }
-    public void updateBindings(int variableID,Object data) {
-        bindHelper.updateBindings(variableID,data);
+        setVariable(item);
+        super.updateItemView(item, position);
     }
     public void updateItemView(Object data, View view, int position){
 
     }
+
+    public void setVariables(Map<Integer,Object> data)
+    {
+        bindHelper.setVariables(data);
+    };
+    public void setVariable(Object data)
+    {
+        bindHelper.setVariable(data);
+    }
+    public void setVariable(int variableID,Object data) {
+        bindHelper.setVariable(variableID, data);
+    }
+
     public View getView(int resID)
     {
         return bindHelper.getView(resID);
