@@ -22,7 +22,13 @@ public class BindingItemHolder<T extends ViewDataBinding> extends BaseItemHolder
     public BindingItemHolder(View itemView,int variableID) {
         super(itemView);
         bindHelper = new BindHelper<T>(itemView,variableID);
+        setVariables(getDefaultMap());
     }
+
+    protected Map<Integer, Object> getDefaultMap() {
+        return null;
+    }
+
     public BindingItemHolder(View itemView)
     {
         this(itemView, -1);

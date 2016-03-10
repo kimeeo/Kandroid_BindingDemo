@@ -74,6 +74,15 @@ public class SimpleListView extends ListView
             map.put(BR.inLineTextWatcher, textWatcher);
             setVariables(map);
         }
+
+        /*
+        protected Map<Integer, Object> getDefaultMap() {
+            Map<Integer,Object> map = new HashMap<>();
+            map.put(BR.handlers, this);
+            map.put(BR.inLineTextWatcher, textWatcher);
+            return map;
+        }*/
+
         public BindingItemHolder1(View itemView) {
             super(itemView);
         }

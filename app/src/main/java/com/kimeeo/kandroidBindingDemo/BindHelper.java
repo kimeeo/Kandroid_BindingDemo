@@ -40,10 +40,12 @@ public class BindHelper<T extends ViewDataBinding> {
         binding.executePendingBindings();
     }
     public void setVariables(Map<Integer, Object> data) {
-        for (Map.Entry<Integer, Object> entry : data.entrySet()) {
-            binding.setVariable(entry.getKey(), entry.getValue());
+        if(data!=null && data.entrySet().size()!=0) {
+            for (Map.Entry<Integer, Object> entry : data.entrySet()) {
+                binding.setVariable(entry.getKey(), entry.getValue());
+            }
+            binding.executePendingBindings();
         }
-        binding.executePendingBindings();
     }
 
     public View getView(int resID)
