@@ -19,8 +19,7 @@ import java.util.Objects;
 public class BindingItemHolder<T extends ViewDataBinding> extends BaseItemHolder {
 
     private final BindHelper<T> bindHelper;
-    public BindingItemHolder(View itemView,int variableID)
-    {
+    public BindingItemHolder(View itemView,int variableID) {
         super(itemView);
         bindHelper = new BindHelper<T>(itemView,variableID);
     }
@@ -28,9 +27,6 @@ public class BindingItemHolder<T extends ViewDataBinding> extends BaseItemHolder
     {
         this(itemView, -1);
     }
-
-
-
     public BindHelper getBindHelper() {
         return bindHelper;
     }
@@ -38,18 +34,13 @@ public class BindingItemHolder<T extends ViewDataBinding> extends BaseItemHolder
     {
         return bindHelper.getBinding();
     }
-
-
-
-    public void updateItemView(Object item, int position)
-    {
+    public void updateItemView(Object item, int position){
         setVariable(item);
         super.updateItemView(item, position);
     }
     public void updateItemView(Object data, View view, int position){
 
     }
-
     public void setVariables(Map<Integer,Object> data)
     {
         bindHelper.setVariables(data);
@@ -61,7 +52,6 @@ public class BindingItemHolder<T extends ViewDataBinding> extends BaseItemHolder
     public void setVariable(int variableID,Object data) {
         bindHelper.setVariable(variableID, data);
     }
-
     public View getView(int resID)
     {
         return bindHelper.getView(resID);

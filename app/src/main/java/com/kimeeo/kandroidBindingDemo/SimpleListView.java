@@ -51,9 +51,9 @@ public class SimpleListView extends ListView
     public View getItemView(int viewType,LayoutInflater inflater,ViewGroup viewGroup)
     {
         View view =inflater.inflate(R.layout.cell, viewGroup, false);
-        //ViewDataBinding binding = DataBindingUtil.bind(view);
-        //return binding.getRoot();
-        return view;
+        ViewDataBinding binding = DataBindingUtil.bind(view);
+        return binding.getRoot();
+        //return view;
     }
     public BaseItemHolder getItemHolder(int viewType,View view)
     {
