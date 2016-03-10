@@ -25,7 +25,6 @@ public class User1 implements Observable {
         handler.postDelayed(runnablelocal, 4000);
     }
     private String name;
-
     @Bindable
     public String getUrl() {
         return url;
@@ -50,6 +49,7 @@ public class User1 implements Observable {
 
         notifyPropertyChanged(BR.name);
     }
+
 
 
 

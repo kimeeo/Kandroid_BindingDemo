@@ -7,24 +7,37 @@ import android.view.View;
 /**
  * Created by bhavinpadhiyar on 3/9/16.
  */
-public class BindHelper {
+public class BindHelper<T extends ViewDataBinding> {
     private final int variableID;
-    private final ViewDataBinding binding;
+    private final T binding;
     public BindHelper(View itemView,int variableID)
     {
         this.variableID=variableID;
-        ViewDataBinding bindingTemp = DataBindingUtil.getBinding(itemView);
+
+        T bindingTemp = DataBindingUtil.getBinding(itemView);
         if(bindingTemp==null)
             bindingTemp = DataBindingUtil.bind(itemView);
         binding =bindingTemp;
     }
-    public ViewDataBinding getBinding()
+    public BindHelper(View itemView)
+    {
+        this(itemView,-1);
+    }
+    public T getBinding()
     {
         return binding;
     }
 
     public void updateBindings(Object data) {
+        if(variableID!=-1)
+            updateBindings(variableID,data);
+    }
+    public void updateBindings(int variableID,Object data) {
         binding.setVariable(variableID, data);
         binding.executePendingBindings();
+    }
+    public View getView(int resID)
+    {
+        return binding.getRoot().findViewById(resID);
     }
 }
