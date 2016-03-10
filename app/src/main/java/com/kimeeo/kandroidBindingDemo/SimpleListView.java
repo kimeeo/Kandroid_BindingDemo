@@ -53,7 +53,7 @@ public class SimpleListView extends ListView
     }
     public BaseItemHolder getItemHolder(int viewType,View view)
     {
-        return new BindingItemHolder1<CellBinding>(view,BR.user);
+        return new BindingItemHolder1(view,BR.user);
 
         //return new BindingItemHolder1<CellBinding>(view);
     }
@@ -65,7 +65,6 @@ public class SimpleListView extends ListView
             super(itemView,variableID);
             CellBinding c=getBinding();
             TextView tx=c.userName;
-            System.out.println(tx);
         }
         public BindingItemHolder1(View itemView) {
             super(itemView);
