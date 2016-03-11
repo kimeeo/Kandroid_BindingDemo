@@ -5,8 +5,6 @@
     <data>
         <variable name="handlers" type="com.kimeeo.kandroidBindingDemo.SimpleListView.BindingItemHolder1"/>
         <variable name="user" type="com.kimeeo.kandroidBindingDemo.User"/>
-        <variable name="inLineTextWatcher" type="android.text.TextWatcher"/>
-
     </data>
     <LinearLayout
         android:background="@color/colorAccent"
@@ -29,7 +27,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.name}"
+            android:text="@{user.name +user.lastName}"
             android:onClick="@{handlers.onClickFriend}"
             />
 

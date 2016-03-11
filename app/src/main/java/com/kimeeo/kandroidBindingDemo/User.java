@@ -15,23 +15,8 @@ public class User extends BaseObservable {
     public User(String name)
     {
         setName(name);
-        setTextWatcher(new ObservableField(tx));
     }
 
-    TextWatcher tx= new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        }
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if (!getName().equals(s.toString()))
-                setName(s.toString());
-        }
-        @Override
-        public void afterTextChanged(Editable s) {
-        }
-    };
-    private String name;
 
     @Bindable
     public String getUrl() {
@@ -46,17 +31,6 @@ public class User extends BaseObservable {
     private String url="http://www.clker.com/cliparts/b/1/f/a/1195445301811339265dagobert83_female_user_icon.svg.med.png";
 
 
-    public ObservableField<TextWatcher> getTextWatcher() {
-        return textWatcher;
-    }
-
-    public void setTextWatcher(ObservableField<TextWatcher> textWatcher) {
-        this.textWatcher = textWatcher;
-        //notifyPropertyChanged(BR.textWatcher);
-    }
-
-    public ObservableField<TextWatcher> textWatcher;
-
     @Bindable
     public String getName() {
         return name;
@@ -67,4 +41,20 @@ public class User extends BaseObservable {
 
         notifyPropertyChanged(BR.name);
     }
+
+
+    private String name;
+
+
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+        //notifyPropertyChanged(BR.lastName);
+    }
+
+    private String lastName =" Patel";
 }
