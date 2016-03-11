@@ -1,5 +1,7 @@
 package com.kimeeo.kandroidBindingDemo;
 
+import android.databinding.BindingAdapter;
+import android.databinding.DataBindingComponent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.text.Editable;
@@ -7,23 +9,20 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.kimeeo.kandroidBindingDemo.databinding.CellBinding;
 import com.kimeeo.library.listDataView.dataManagers.DataManager;
-import com.kimeeo.library.listDataView.dataManagers.IListProvider;
-import com.kimeeo.library.listDataView.dataManagers.PageData;
 import com.kimeeo.library.listDataView.dataManagers.StaticDataManger;
-import com.kimeeo.library.listDataView.dataManagers.simpleList.ListDataManager;
 import com.kimeeo.library.listDataView.recyclerView.BaseItemHolder;
 import com.kimeeo.library.listDataView.recyclerView.verticalViews.ListView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import com.kimeeo.kandroidBindingDemo.BR;
+
+import com.squareup.picasso.Picasso;
+
 /**
  * Created by bhavinpadhiyar on 1/27/16.
  */
@@ -71,7 +70,7 @@ public class SimpleListView extends ListView
 
             Map<Integer,Object> map = new HashMap<>();
             map.put(BR.handlers, this);
-            map.put(BR.inLineTextWatcher, textWatcher);
+            //map.put(BR.inLineTextWatcher, textWatcher);
             setVariables(map);
         }
 
@@ -98,7 +97,7 @@ public class SimpleListView extends ListView
         }
 
 
-        TextWatcher textWatcher=new TextWatcher() {
+        public TextWatcher onTextChange=new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }

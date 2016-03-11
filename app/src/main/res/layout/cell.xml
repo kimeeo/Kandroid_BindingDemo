@@ -45,8 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:inputType="text"
-            android:addTextChangedListener="@{inLineTextWatcher}"
-            tools:text="Test Data"/>
+            android:addTextChangedListener="@{handlers.onTextChange}"/>
 
         <!--
         android:visibility="@{user.name==&quot;B1&quot;?View.GONE:View.GONE}"
